@@ -1,6 +1,4 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_pi_chat/name.dart';
 
 class PiChatHomeScreen extends StatefulWidget {
   const PiChatHomeScreen({super.key});
@@ -30,28 +28,41 @@ class _PiChatHomeScreenState extends State<PiChatHomeScreen> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 22),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-
-            CustomRow('ferdaus',Icons.ice_skating),
-            SizedBox(height: 10,),
-            CustomRow('title',Icons.invert_colors_on),
-           
-
+          children: const [
+            Expanded(
+              child: Count(), // ✅ Custom ListView.builder Widget
+            ),
           ],
         ),
       ),
     );
   }
+}
 
-  Row CustomRow(String title, IconData icon) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(title,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22,color: Colors.blue),),
-              Icon(icon,color: Colors.blue,size: 22,)
-            ],
-          );
+class Count extends StatelessWidget {
+  const Count({super.key});
+
+  final List<String> dataList = const [
+    "Item 1",
+    "Item 2",
+    "Item 3",
+    "Item 4",
+    "Item 5"
+  ]; // ✅ লিস্ট ডাটা
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: dataList.length,
+      scrollDirection: Axis.vertical,
+      itemBuilder: (BuildContext context, int index) {
+        return ListTile(
+          leading: const CircleAvatar(),
+          title: Text(dataList[index]),
+          subtitle: const Text('ferdaus'),
+          trailing: const CircleAvatar(),
+        );
+      },
+    );
   }
 }

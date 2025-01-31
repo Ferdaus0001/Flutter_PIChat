@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'features/home/presentation/pi_chat_home_screen.dart';
+import 'features/tap_bar_widget/presentation/tap_bar_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home:   PiChatHomeScreen(),
+      home:   TapBarScreen(),
     );
   }
 }
